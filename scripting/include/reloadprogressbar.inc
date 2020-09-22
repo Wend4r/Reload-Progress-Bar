@@ -12,7 +12,9 @@
  * @param flProgressBarTime   What time will be set for ProgressBar.
  *                            Return Plugin_Changed for apply changes.
  * 
- * @return                    Return Plugin_Continue to ignore Plugin_Changed if result was changed Plugin_Handled and higher to block.
+ * @return                    Return Plugin_Continue to ignore actions.
+ *                            Plugin_Changed if result was changed.
+ *                            Plugin_Handled to block displaying ProgressBar.
  */
 forward Action OnWeaponReloadProgressBar(int iClient, int iWeapon, float &flProgressBarTime);
 
