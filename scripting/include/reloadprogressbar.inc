@@ -30,7 +30,7 @@ forward void OnWeaponReloadProgressBarPost(int iClient, int iWeapon, float flPro
 
 
 
-public SharedPlugin __pl_restrict = 
+public SharedPlugin __pl_reloadprogressbar = 
 {
 	name = "reloadprogressbar",
 	file = "reloadprogressbar.smx",
