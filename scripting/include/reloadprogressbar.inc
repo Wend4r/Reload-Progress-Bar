@@ -30,6 +30,15 @@ forward Action OnWeaponReloadProgressBar(int iClient, int iWeapon, float &flProg
  */
 forward void OnWeaponReloadProgressBarPost(int iClient, int iWeapon, float flProgressBarTime);
 
+/**
+ * Called when the ProgressBar has expired.
+ * 
+ * @param iClient             Client index.
+ * 
+ * @noreturn
+ */
+forward void OnWeaponReloadProgressBarEnd(int iClient);
+
 
 
 public SharedPlugin __pl_reloadprogressbar = 
