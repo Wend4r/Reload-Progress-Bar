@@ -14,7 +14,7 @@ public Plugin myinfo =
 {
 	author = "[Reload Progress Bar] Command",
 	name = "Wend4r",
-	version = "1.1"
+	version = "1.2"
 };
 
 public void OnPluginStart()
@@ -24,6 +24,14 @@ public void OnPluginStart()
 	g_hCookieStatus = new Cookie("Reload Progress Bar", NULL_STRING, CookieAccess_Protected);
 
 	LoadTranslations("rpb_command.phrases");
+
+	for(int i = MaxClients + 1; --i;)
+	{
+		if(IsClientInGame(i) && !IsFakeClient(i) && AreClientCookiesCached(i))
+		{
+			OnClientCookiesCached(i);
+		}
+	}
 }
 
 public void OnClientCookiesCached(int iClient)
@@ -60,4 +68,9 @@ Action OnToggleCommand(int iClient, int iArgs)
 public Action OnWeaponReloadProgressBar(int iClient, int iWeapon, float &flProgressBarTime)
 {
 	return g_bReloadStatus[iClient] ? Plugin_Continue : Plugin_Handled;
+}
+
+public void OnClientDisconnect(int iClient)
+{
+	g_bReloadStatus[iClient] = false;
 }
