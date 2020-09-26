@@ -51,6 +51,8 @@ public APLRes AskPluginLoad2(Handle hMySelf, bool bLate, char[] sError, int iErr
 	g_hWeaponReloadPostForward = new GlobalForward("OnWeaponReloadProgressBarPost", ET_Ignore /* void */, Param_Cell /* int iClient */, Param_Cell /* int iWeapon */, Param_Float /* float flProgressBarTime */);
 	g_hWeaponReloadEndForward = new GlobalForward("OnWeaponReloadProgressBarEnd", ET_Ignore /* void */, Param_Cell /* int iClient */);
 
+	RegPluginLibrary("reloadprogressbar");
+
 	return APLRes_Success;
 }
 
