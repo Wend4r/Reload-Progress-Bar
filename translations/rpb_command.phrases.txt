@@ -2,7 +2,7 @@
 {
 	"ToggleProgressBar"
 	{
-		"#format"   "{1:s}"
+		"#format"   "{1:T}"
 		"en"        " [RBP] Вы {1} Progress Bar"
 		"ru"        " [RBP] Вы {1} Прогресс-Бар"
 	}
