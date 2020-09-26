@@ -19,7 +19,7 @@ public Plugin myinfo =
 
 public void OnPluginStart()
 {
-	RegConsoleCmd("sm_rbp", OnToggleCommand);
+	RegConsoleCmd("sm_rpb", OnToggleCommand);
 
 	g_hCookieStatus = new Cookie("Reload Progress Bar", NULL_STRING, CookieAccess_Protected);
 
