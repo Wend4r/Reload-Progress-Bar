@@ -1,0 +1,19 @@
+"Phrases"
+{
+	"ToggleProgressBar"
+	{
+		"#format"   "{1:s}"
+		"en"        " [RBP] Вы {1} Progress Bar"
+		"ru"        " [RBP] Вы {1} Прогресс-Бар"
+	}
+	"TurnOn"
+	{
+		"en"        "turn on"
+		"ru"        "включили"
+	}
+	"TurnOff"
+	{
+		"en"        "turn off"
+		"ru"        "включили"
+	}
+}

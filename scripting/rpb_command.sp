@@ -14,7 +14,7 @@ public Plugin myinfo =
 {
 	author = "[Reload Progress Bar] Command",
 	name = "Wend4r",
-	version = "1.0"
+	version = "1.1"
 };
 
 public void OnPluginStart()
@@ -22,6 +22,8 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_rbp", OnToggleCommand);
 
 	g_hCookieStatus = new Cookie("Reload Progress Bar", NULL_STRING, CookieAccess_Protected);
+
+	LoadTranslations("rpb_command.phrases");
 }
 
 public void OnClientCookiesCached(int iClient)
@@ -35,11 +37,13 @@ public void OnClientCookiesCached(int iClient)
 
 Action OnToggleCommand(int iClient, int iArgs)
 {
+	int iTime = GetTime();
+
 	static int iTimeout[MAXPLAYERS + 1];
 
-	if(iTimeout[iClient] < GetTime())
+	if(iTimeout[iClient] < iTime)
 	{
-		PrintToChat(iClient, " \x0A[RBP] \x01Вы %s \x01прогресс-бар", (g_bReloadStatus[iClient] ^= true) ? "\x06включили":"\x07выключили");
+		PrintToChat(iClient, "%T", "ToggleProgressBar", iClient, (g_bReloadStatus[iClient] ^= true) ? "TurnOn" : "TurnOff", iClient);
 
 		char sValue[2];
 
@@ -47,7 +51,7 @@ Action OnToggleCommand(int iClient, int iArgs)
 
 		SetClientCookie(iClient, g_hCookieStatus, sValue);
 
-		iTimeout[iClient] = GetTime();
+		iTimeout[iClient] = iTime;
 	}
 
 	return Plugin_Handled;
@@ -56,12 +60,4 @@ Action OnToggleCommand(int iClient, int iArgs)
 public Action OnWeaponReloadProgressBar(int iClient, int iWeapon, float &flProgressBarTime)
 {
 	return g_bReloadStatus[iClient] ? Plugin_Continue : Plugin_Handled;
-}
-
-public void OnClientDisconnect(int iClient)
-{
-	char sValue[8];
-
-	IntToString(view_as<int>(g_bReloadStatus[iClient]), sValue, sizeof sValue);
-	SetClientCookie(iClient, g_hCookieStatus, sValue);
 }
